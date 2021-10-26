@@ -35,7 +35,7 @@ def ShowMenu():
             print("Adios")
             break
         else:
-            print("Ingrese un parametro valido")
+            print("Ingrese un parametro   valido")
             break
 
         return None
