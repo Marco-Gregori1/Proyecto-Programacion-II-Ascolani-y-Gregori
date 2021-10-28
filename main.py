@@ -4,10 +4,71 @@
 
 
 '''
+'''         BIBLIOTECAS             
+'''
+import math
+import functools
+
 
 
 '''         FUNCIONES              '''
 
+def ProblemaColecciones():
+    print('''
+    Problema  1: Explicar en pocas palabras y utilizando diagramas las operaciones de map, filter y reduce. Proponga
+    ejemplos de cada uno (conceptuales, no necesariamente en código).
+
+    Solucion: Esta en el archivo "Colecciones 1.pdf"
+    ''')
+    eleccion = input("Desea ver el siguiente problema [1] o volver al menu [0]?:")
+    if eleccion == "1":
+
+        print('''
+        Problema 2: El número irracional “pi” puede calcularse a partir una serie, Implemente un algoritmo
+         sin usar estructuras repetitivas para calcular una aproximación de pi con N
+        términos.:
+        
+                ''')
+        lista = []
+        def CrearRangoSerie(x):
+            if x == 0:
+                lista.append(x)
+
+            else:
+                lista.append(x)
+                x = x - 1
+                CrearRangoSerie(x)
+            lista.sort()
+            return lista
+        def CalculoSerie(i):
+            numerador = 4 * pow(-1, i)
+            denominador = (2 * i + 1)
+            resultado = numerador / denominador
+
+            return resultado
+        def Suma(a, b):
+            return a + b
+        RangoMax = int(input("  Inserte el numero limite de la serie, mientras mayor sea, más"
+                         "se acercara al numero Pi, tenga en cuenta que el máximo es 994 "))
+        lista = CrearRangoSerie(RangoMax)
+        MapeoLista = map(CalculoSerie, lista)
+        print("Resultado de la serie : ")
+        print(functools.reduce(Suma, list(MapeoLista)))
+        print('''Si desea saber más acerca de esta serie googlé "serie Gregory-Leibniz"''')
+
+
+        eleccion2 = input("Desea ver el ejercicio anterior [1] o volver al menu [0]?:")
+        if eleccion2 == "1":
+            ProblemaColecciones()
+        elif eleccion2 == "0":
+            ShowMenu()
+        else:
+            print("Error")
+
+    elif eleccion == "0":
+        ShowMenu()
+    else:
+        print("Error ")
 
 def ProblemaRegex():
     print('''
@@ -38,7 +99,6 @@ def ProblemaRegex():
         print("Error ")
 
 
-
 def ShowMenu():
     res = True
     while (res == True):
@@ -59,15 +119,15 @@ def ShowMenu():
         elif eleccion == '2':
             print("a")
         elif eleccion == '3':
-            print("a")
+            ProblemaColecciones()
         elif eleccion == '4':
             print("a")
         elif eleccion == '5':
             print("Adios")
-            break
+            res = False
         else:
             print("Ingrese un parametro valido")
-            break
+            ShowMenu()
 
         return None
 
