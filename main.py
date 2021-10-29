@@ -85,11 +85,54 @@ def ProblemaRegex():
 
         Solucion: "^([1-9][0-9]{0,2}|[1][0-8][0-9][0-9]|[-][0-9]*)$" }
         ''')
-        eleccion2 = input("Desea ver el ejercicio anterior [1] o volver al menu [0]?:")
+        eleccion2 = input("Desea volver a ver el primer ejercicio [1], volver al menu [0] o ver funciones para validar"
+                          " ejercicios de ER (opcional) [2]:")
         if eleccion2 == "1":
             ProblemaRegex()
         elif eleccion2 == "0":
             ShowMenu()
+        elif eleccion2 == "2":
+            print(''' 
+            en la librería estandar de Python podemos encontrar el módulo re,
+            el cual nos proporciona todas las operaciones necesarias para trabajar con las expresiones regulares.
+            Esta biblioteca tiene los siguientes métodos para buscar coincidencias con nuestro texto.
+            
+                -match(): determina si la regex tiene coincidencias en el comienzo del texto.
+                -search(): escanea todo el texto buscando cualquier ubicación donde haya una coincidencia.
+                -findall() encuentra todos los subtextos donde haya una coincidencia y
+                 nos devuelve estas coincidencias como una lista.
+                -finditer():similar al anterior pero en lugar de devolvernos 
+                 una lista nos devuelve un iterador.
+                 
+                 A continuación veremos un ejemplo de la implementacion de una funcionalidad...
+                 
+                 Si quisieramos determinar si una patente del ejercicio 1 es válida podriamos utilizar la funcion match
+                 , pero para eso primero debemos importar la biblioteca re...
+                 
+                 # Despues de eso, determinariamos el patron o expresion regular para modelo comparativo
+                 
+                 patron = re.compile(r'L[VQ]-[A-Z]\w{2,4}')
+                 
+                 # Luego determinaremos la patente a verificar...
+                 
+                 patente = "LV-QWE"
+                 
+                 # Finalmente comenzariamos el testeo imprimiendo la el resultado...
+                 
+                 print(patron.match(texto))
+                 
+                 El output de esto seria : <re.Match object; span=(0, 6), match='LV-QWE'>
+                 
+                 Basicamente expresa que encontro un objeto, con el patron especificado en el string especificado...
+                    
+                 ''')
+            eleccion3 = input("Desea ver el ejercicio anterior [1], volver al menu [0] :")
+            if eleccion3 == "1":
+                ProblemaRegex()
+            elif eleccion3 == "0":
+                ShowMenu()
+            else:
+                    print("Error")
         else:
             print("Error")
 
