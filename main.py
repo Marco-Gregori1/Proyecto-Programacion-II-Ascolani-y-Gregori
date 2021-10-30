@@ -8,10 +8,103 @@
 '''
 import math
 import functools
-
+import json
 
 
 '''         FUNCIONES              '''
+def ProblemaFID():
+
+    with open('Data.json', 'r',
+              encoding="utf-8") as j:
+        Data = json.load(j)
+
+    Estaciones = Data["Estaciones"]
+
+    def dataSensoresUM(nombre):
+        sensores = (Estaciones[nombre]["Sensores"])
+        cantidadSensores = (Estaciones[nombre]["CantidadSensores"])
+        print("Cantidad de sensores en ", nombre, " : ", cantidadSensores)
+        print("-----------------------------------------------------")
+        for sensor in sensores:
+            if "Humedad" in sensor:
+                print("Humedad : ", sensor.get("Humedad"), "hma")
+            elif "Temperatura" in sensor:
+                print("Temperatura : ", sensor.get("Temperatura"), "C°")
+            elif "Viento" in sensor:
+                print("Viento : ", sensor.get("Viento"), "Km/h")
+            else:
+                print("ERROR : Unidad Meterorologica Sin Sensores")
+
+        print("-----------------------------------------------------")
+
+        return None
+
+    def umMenorVoltaje():
+        total = {}
+        for Estacion in Estaciones:
+            data = Estaciones[Estacion]["Bateria mV"]
+            if data != []:
+
+                promedio = sum(data) / len(data)
+
+                total[Estacion] = promedio
+
+            else:
+                print('''AVISO : Unidad Meteorologica''', Estacion, '''sin una bateria funcional
+                ''')
+
+        total = (sorted(total.items(), key=lambda item: item[1]))
+        print(""
+              "Unidad meteorologica con menor bateria : ")
+        print(min(total))
+        print("")
+
+        return None
+
+        return None
+
+    print('''
+        Problema 1: A partir del nombre de la estación, computar la cantidad de sensores disponible y mostrar por pantalla
+    los diferentes sensores, cada uno deberá mostrar el tipo y la variable medida:
+    
+    ''')
+    nombre = input('''
+    
+    Nombre de Estaciones:
+    
+    -UM San Juan
+    -UM Gral Roca
+    -UM 9 de Julio
+    -UM San Martin
+    
+    Inserte el nombre de una Estacion para tener más informacion sobre ella:
+    '''
+
+          )
+    dataSensoresUM(nombre)
+    eleccion = input('''Deseas seguir insertando nombres [1] o ir al siguiente prblema [0]?''')
+    if eleccion == "1":
+        ProblemaFID()
+    elif eleccion == "0":
+
+        print(''' Problema 2: Calcular cuál es la estación con menos batería, es decir, la estación con menor valor promedio de
+voltaje.
+
+Solucion:
+''')
+        umMenorVoltaje()
+        eleccion2 = input("Desea ver el ejercicio anterior [1] o volver al menu [0]?:")
+        if eleccion2 == "1":
+            ProblemaFID()
+        elif eleccion2 == "0":
+            ShowMenu()
+        else:
+            print("Error")
+
+
+    else:
+        print("Error ")
+
 
 def ProblemaColecciones():
     print('''
@@ -164,7 +257,7 @@ def ShowMenu():
         elif eleccion == '3':
             ProblemaColecciones()
         elif eleccion == '4':
-            print("a")
+            ProblemaFID()
         elif eleccion == '5':
             print("Adios")
             res = False
