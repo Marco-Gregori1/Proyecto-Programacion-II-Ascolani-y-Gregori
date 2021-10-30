@@ -1,0 +1,35 @@
+{
+"Estaciones": {
+            "UM San Juan": {
+              "Id": "A2300BCD",
+              "Locación": [{"Lat": 0.433333},{"Lon": 4.44444}],
+              "CantidadSensores": 3,
+              "Sensores":[{"Humedad":1030},{"Temperatura":19},{"Viento": 40}],
+              "Bateria mV":[20000, 19990, 19950, 19790, 19720,19700, 19680, 19670, 19640, 19420,
+              19233,19100,19000,18900,18888,18790,18677,18570,18520,18003]
+            },
+            "UM Gral Roca": {
+              "Id": "FKL290D",
+              "Locación": [{"Lat": 10.333},{"Lon": -104.44444}],
+              "CantidadSensores": 2,
+              "Sensores":[{"Humedad":1100},{"Temperatura":29}],
+              "Bateria mV":[30000, 29980, 19920, 18790, 18720,18700, 18680, 18670, 18640, 18420,
+              18233,18100,18000,17900,17888,17790,17677,17570,17520,17003]
+            },
+            "UM San Martin": {
+              "Id": "A2F0DYE5",
+              "Locación": [{"Lat": 150.43333},{"Lon": -74.44444}],
+              "CantidadSensores": 3,
+              "Sensores":[{"Humedad":1510},{"Temperatura":9},{"Viento": 50}],
+              "Bateria mV":[14000, 13990, 13950, 13790, 13720,13700, 13680, 13670, 13640, 13420,
+              13233,13100,12000,12900,12888,12790,12677,12570,12520,12003]
+            },
+            "UM 9 de Julio": {
+              "Id": "FM330ZDD",
+              "Locación": [{"Lat": 40.432233},{"Lon": 41.44444}],
+              "CantidadSensores": 0,
+              "Sensores":[],
+              "Bateria mV":[]
+            }
+}
+}
