@@ -9,11 +9,29 @@
 import math
 import functools
 import json
-
+import xml.etree.cElementTree as ET
 
 '''         FUNCIONES              '''
 def ProblemaFID():
+    ''' XML '''
+    raiz = ET.parse("Data.xml")
+    UM = raiz.getroot()
 
+    def DataUMnameXML(nombre):
+        baseCS = raiz.findall(nombre + "/CantidadSensores")
+        for elem in baseCS:
+            CS = elem.text
+            print("Cantidad de sensores en ", nombre, " : ", elem.text)
+            print("-----------------------------------------------------")
+        baseS = raiz.findall(nombre + "/Sensores")
+        for child in baseS:
+            for x in child:
+                print(x.tag, " : ", x.text)
+        if CS == "0":
+            print("ERROR : Unidad Meterorologica Sin Sensores")
+        print("-----------------------------------------------------")
+        return None
+    ''' JSON '''
     with open('Data.json', 'r',
               encoding="utf-8") as j:
         Data = json.load(j)
@@ -64,8 +82,11 @@ def ProblemaFID():
         return None
 
     print('''
+        
         Problema 1: A partir del nombre de la estación, computar la cantidad de sensores disponible y mostrar por pantalla
     los diferentes sensores, cada uno deberá mostrar el tipo y la variable medida:
+    
+    Lenguaje utilizado : (JSON)
     
     ''')
     nombre = input('''
@@ -93,9 +114,43 @@ voltaje.
 Solucion:
 ''')
         umMenorVoltaje()
-        eleccion2 = input("Desea ver el ejercicio anterior [1] o volver al menu [0]?:")
+        eleccion2 = input("Desea ver el ejercicio siguiente (Formato XML) [1] o volver al menu [0]?:")
         if eleccion2 == "1":
-            ProblemaFID()
+            print('''A continuacion, podras buscar la informacion de una Unidad Meteorologica en base a su nombre,
+             con la diferencia que esta en formato xml... ''')
+            nombre = input('''
+
+                Nombre de Estaciones:
+
+                -UM_San_Juan
+                -UM_Gral_Roca
+                -UM_9_de_Julio
+                -UM_San_Martin
+
+                Inserte el nombre de una Estacion para tener más informacion sobre ella:
+                '''
+
+                           )
+            DataUMnameXML(nombre)
+            eleccion = input('''Desea ir al siguiente problema [1] o ir al menu [0]?''')
+            if eleccion == "1":
+                print('''No pudimos hacerlo... :( ''')
+                eleccion2 = input('''Desea ir al comienzo de este problema [1] o ir al menu [0]?''')
+                if eleccion2 == "1":
+                    ProblemaFID()
+                elif eleccion2 == "0":
+                    ShowMenu()
+                else:
+                    print("Error")
+
+            elif eleccion == "0":
+                ShowMenu()
+
+            else:
+                print("Error")
+
+
+
         elif eleccion2 == "0":
             ShowMenu()
         else:
@@ -124,6 +179,9 @@ def ProblemaColecciones():
                 ''')
         lista = []
         def CrearRangoSerie(x):
+            if x < 0:
+                print("Error, inserte un numero mayor a cero")
+                ShowMenu()
             if x == 0:
                 lista.append(x)
 
