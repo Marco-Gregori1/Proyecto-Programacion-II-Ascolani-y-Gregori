@@ -104,16 +104,4 @@
         <Bateria_mV>12520</Bateria_mV>
         <Bateria_mV>12003</Bateria_mV>
   </UM_San_Martin>
-  <UM_9_de_Julio>
-        <Id>FM330ZDD</Id>
-        <Locación>
-          <Lat>40.432233</Lat>
-        </Locación>
-        <Locación>
-          <Lon>41.44444</Lon>
-        </Locación>
-        <CantidadSensores>0</CantidadSensores>
-        <Sensores/>
-        <Bateria_mV/>
-      </UM_9_de_Julio>
 </Estaciones>

@@ -17,6 +17,23 @@ def ProblemaFID():
     raiz = ET.parse("Data.xml")
     UM = raiz.getroot()
 
+    def NivelBatXML():
+        Dicc = {}
+        promedios = []
+        for Estaciones in UM:
+            total = []
+            Estacion = (Estaciones.tag)
+            for x in range(0, 20):
+                valores = int(raiz.findall(Estacion + "/Bateria_mV")[x].text)
+                total.append(valores)
+            promedios = sum(total) / 20
+            Dicc[Estacion] = promedios
+        Dicc = (sorted(Dicc.items(), key=lambda item: item[1]))
+        print("")
+        print("Unidad Meteorologica con menor nivel de bateria : ", Dicc[0])
+        print("")
+        return None
+
     def DataUMnameXML(nombre):
         baseCS = raiz.findall(nombre + "/CantidadSensores")
         for elem in baseCS:
@@ -72,9 +89,12 @@ def ProblemaFID():
                 ''')
 
         total = (sorted(total.items(), key=lambda item: item[1]))
+        print(total)
+        print("")
         print(""
               "Unidad meteorologica con menor bateria : ")
-        print(min(total))
+
+        print(total[0])
         print("")
 
         return None
@@ -93,17 +113,17 @@ def ProblemaFID():
     
     Nombre de Estaciones:
     
-    -UM San Juan
-    -UM Gral Roca
-    -UM 9 de Julio
-    -UM San Martin
+    - UM San Juan
+    - UM Gral Roca
+    - UM 9 de Julio
+    - UM San Martin
     
     Inserte el nombre de una Estacion para tener más informacion sobre ella:
     '''
 
           )
     dataSensoresUM(nombre)
-    eleccion = input('''Deseas seguir insertando nombres [1] o ir al siguiente prblema [0]?''')
+    eleccion = input('''Deseas seguir insertando nombres [1] o ir al siguiente problema [0]?''')
     if eleccion == "1":
         ProblemaFID()
     elif eleccion == "0":
@@ -122,10 +142,9 @@ Solucion:
 
                 Nombre de Estaciones:
 
-                -UM_San_Juan
-                -UM_Gral_Roca
-                -UM_9_de_Julio
-                -UM_San_Martin
+                - UM_San_Juan
+                - UM_Gral_Roca
+                - UM_San_Martin
 
                 Inserte el nombre de una Estacion para tener más informacion sobre ella:
                 '''
@@ -134,7 +153,7 @@ Solucion:
             DataUMnameXML(nombre)
             eleccion = input('''Desea ir al siguiente problema [1] o ir al menu [0]?''')
             if eleccion == "1":
-                print('''No pudimos hacerlo... :( ''')
+                NivelBatXML()
                 eleccion2 = input('''Desea ir al comienzo de este problema [1] o ir al menu [0]?''')
                 if eleccion2 == "1":
                     ProblemaFID()
