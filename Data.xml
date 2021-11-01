@@ -11,11 +11,7 @@
         <CantidadSensores>3</CantidadSensores>
         <Sensores>
           <Humedad>1030</Humedad>
-        </Sensores>
-        <Sensores>
           <Temperatura>19</Temperatura>
-        </Sensores>
-        <Sensores>
           <Viento>40</Viento>
         </Sensores>
         <Bateria_mV>20000</Bateria_mV>
@@ -50,8 +46,6 @@
         <CantidadSensores>2</CantidadSensores>
         <Sensores>
           <Humedad>1100</Humedad>
-        </Sensores>
-        <Sensores>
           <Temperatura>29</Temperatura>
         </Sensores>
         <Bateria_mV>30000</Bateria_mV>
@@ -86,11 +80,7 @@
         <CantidadSensores>3</CantidadSensores>
         <Sensores>
           <Humedad>1510</Humedad>
-        </Sensores>
-        <Sensores>
           <Temperatura>9</Temperatura>
-        </Sensores>
-        <Sensores>
           <Viento>50</Viento>
         </Sensores>
         <Bateria_mV>14000</Bateria_mV>
