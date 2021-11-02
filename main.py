@@ -14,7 +14,7 @@ import xml.etree.cElementTree as ET
 '''         FUNCIONES              '''
 def ProblemaFID():
     ''' XML '''
-    raiz = ET.parse("Data.xml")
+    raiz = ET.parse("/Data.xml")
     UM = raiz.getroot()
 
     def NivelBatXML():
@@ -240,6 +240,121 @@ def ProblemaColecciones():
     else:
         print("Error ")
 
+def ProblemaRecursivo():
+	def parimpar(cifra):
+		if len(cifra) == 0:
+			return cifra
+		else:
+			primera	= int(cifra[0])
+			if primera % 2 == 0:
+				return "1" + parimpar(cifra[1:])
+			else:
+				return "2" + parimpar(cifra[1:])
+
+	def juntar_listas(listainter):
+		if len(listainter) == 0:
+			return listainter 
+		else:
+			return listainter[0]  + juntar_listas(listainter[1:])
+
+	L = [ [1, 2, 3], [4, 5, 6], [7], [8] ]
+
+	def iguales(listaUno, listaDos):
+		if len(listaUno) != len(listaDos):
+			return False
+		elif len(listaUno) == 0 and len(listaDos) == 0:
+			return True
+		elif listaUno[0] == listaDos[0]:
+			return iguales(listaUno[1:], listaDos[1:])
+		else: 
+			return False
+
+
+	def dividir (dividendo, divisor):
+		if divisor==0:
+			return False
+		elif dividendo == divisor:
+			return 1
+		elif dividendo < divisor:
+			return 0
+		else:
+			return 1 + dividir(dividendo - divisor, divisor)
+	print('''
+	Consigna:
+	Codificar un número entero de la siguiente manera cada dígito par sustituirlo por 1, cada dígito impar
+por 2. Puede pasar el número a otras representaciones para resolver el ejercicio.
+Ejemplo: El número 46579222 deberá codificarse como 11222111.
+
+	''')
+	print( 'Numero original :46579222')
+	print ('Numero modificado: ',parimpar('46579222') )
+	
+
+	print('''
+	---------------------------------------------
+	
+	Consigna:
+	Convertir una lista de listas en una sola lista que tenga todos los elementos de las listas originales.
+Ejemplo: Si L = [ [1, 2, 3], [4, 5, 6], [7], [8] ] la lista resultante deberá ser L2 = [1,2,3,4,5,6,7,8]
+
+
+	''')
+	print('Lista a unir :[ [1, 2, 3], [4, 5, 6], [7], [8] ] ')
+	print('Lista Unida:')
+	L = [ [1, 2, 3], [4, 5, 6], [7], [8] ]
+
+	print(juntar_listas(L))
+
+
+	print('''
+	---------------------------------------------
+	
+	Consigna:
+	 Decidir si dos listas de números enteros son iguales.
+
+	''')
+	print('''
+	Listas a comparar:
+
+	L  = [1, 2, 3, 4]
+	L2 = [1, 2, 3, 8]
+	L3 = [1, 2, 3, 8, 5]
+	''')
+	L  = [1, 2, 3, 4]
+	L2 = [1, 2, 3, 8]
+	L3 = [1, 2, 3, 8, 5]
+	L4 = [1, 2, 3, 4]
+	print('Ejemplo comparacion L3 y L2')
+	print(iguales(L3,L2))
+	print('Ejemplo comparacion L y L2')
+	print(iguales(L,L2))
+	print('Ejemplo comparacion L y L4')
+	print(iguales(L,L4))
+
+
+	print('''
+	----------------------------
+	
+	Consigna:
+	Realizar la división entera entre dos números enteros positivos A y B, (B ≠ 0). Ayuda: Pensar la
+división entera como sucesión de restas
+
+
+	''')
+	
+	print(' Aqui hay 3 resultados distintos, el primero funciona correcto, el segundo no se puede y el tercero da 0')
+	print('6/3 = {}'.format(dividir(6, 3)))
+	print('7/0 = {}'.format(dividir(7, 0)))
+	print('1/9 = {}'.format(dividir(1, 9)))
+
+
+
+
+
+
+
+
+
 def ProblemaRegex():
     print('''
     Problema 1 : Las matrículas de las aeronaves en Argentina tienen el siguiente formato de acuerdo a su tipo (donde
@@ -330,7 +445,7 @@ def ShowMenu():
         if eleccion == '1':
             ProblemaRegex()
         elif eleccion == '2':
-            print("a")
+            ProblemaRecursivo()
         elif eleccion == '3':
             ProblemaColecciones()
         elif eleccion == '4':
